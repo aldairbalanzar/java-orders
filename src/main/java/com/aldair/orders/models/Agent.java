@@ -12,10 +12,10 @@ public class Agent {
     private long agentid;
 
     private String agentname;
-    private double commission;
-    private String country;
-    private String phone;
     private String workingarea;
+    private double commission;
+    private String phone;
+    private String country;
 
     @OneToMany(mappedBy = "agent", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Customer> customerList = new ArrayList<>();
@@ -24,12 +24,12 @@ public class Agent {
         // default jpa constructor
     }
 
-    public Agent(String agentname, double commission, String country, String phone, String workingarea) {
+    public Agent(String agentname, String workingarea, double commission, String phone, String country) {
         this.agentname = agentname;
-        this.commission = commission;
-        this.country = country;
-        this.phone = phone;
         this.workingarea = workingarea;
+        this.commission = commission;
+        this.phone = phone;
+        this.country = country;
     }
 
     public long getAgentid() {
