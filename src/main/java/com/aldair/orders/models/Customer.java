@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @Entity
@@ -13,16 +14,16 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long customerid;
 
-    private String custcity;
-    private String custcountry;
     private String custname;
+    private String custcity;
+    private String workingarea;
+    private String custcountry;
     private String grade;
     private double openingamt;
-    private double outstandingamt;
-    private double paymentamt;
-    private String phone;
     private double receiveamt;
-    private String workingarea;
+    private double paymentamt;
+    private double outstandingamt;
+    private String phone;
 
     @ManyToOne
     @JoinColumn(name = "agentid", nullable = false)
@@ -35,17 +36,17 @@ public class Customer {
         // default jpa constructor
     }
 
-    public Customer(String custcity, String custcountry, String custname, String grade, double openingamt, double outstandingamt, double paymentamt, String phone, double receiveamt, String workingarea, Agent agent) {
-        this.custcity = custcity;
-        this.custcountry = custcountry;
+    public Customer(String custname, String custcity, String workingarea, String custcountry, String grade, double openingamt, double receiveamt, double paymentamt, double outstandingamt, String phone, Agent agent) {
         this.custname = custname;
+        this.custcity = custcity;
+        this.workingarea = workingarea;
+        this.custcountry = custcountry;
         this.grade = grade;
         this.openingamt = openingamt;
-        this.outstandingamt = outstandingamt;
-        this.paymentamt = paymentamt;
-        this.phone = phone;
         this.receiveamt = receiveamt;
-        this.workingarea = workingarea;
+        this.paymentamt = paymentamt;
+        this.outstandingamt = outstandingamt;
+        this.phone = phone;
         this.agent = agent;
     }
 
@@ -152,4 +153,5 @@ public class Customer {
     public void setOrderList(List<Order> orderList) {
         this.orderList = orderList;
     }
+
 }

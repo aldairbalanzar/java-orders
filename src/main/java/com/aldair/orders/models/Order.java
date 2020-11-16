@@ -11,10 +11,10 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long orderid;
 
-    private double advanceamount;
     private double ordamount;
-    private String orderdescription;
+    private double advanceamount;
     private double custcode;
+    private String orderdescription;
 
     @ManyToOne
     @JoinColumn(name = "customerid", nullable = false)
@@ -30,12 +30,15 @@ public class Order {
         // default jpa constructor
     }
 
-    public Order(double advanceamount, double ordamount, String orderdescription, double custcode, Customer customer) {
-        this.advanceamount = advanceamount;
+    public Order(double ordamount, double advanceamount, double custcode, String orderdescription, Customer customer) {
         this.ordamount = ordamount;
-        this.orderdescription = orderdescription;
+        this.advanceamount = advanceamount;
         this.custcode = custcode;
+        this.orderdescription = orderdescription;
         this.customer = customer;
+    }
+
+    public Order(double v, double v1, Customer c19, String sod) {
     }
 
     public long getOrderid() {
